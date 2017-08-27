@@ -1,0 +1,298 @@
+
+
+
+So each starfox object is given an id, this id consists of an offset:
+
+Object header address = object id - $7E00
+
+
+This leads to a 28 byte header e.g. id $20D3 is at $5520: the 28 byte header is:
+
+73 F1 11 96 F1 00 00 00 AC 5D 24 00 0E 00 50 00 50 00 13 82 20 D3 20 D3 20 D3 20 D3
+
+[1]--[2] bytes is vertex data offset from $70200
+
+73 F1 -> $F173
+$F173
+
+[3] byte is the bank number
+
+[4]--[5] bytes is face data
+
+Same as before (First half-byte is reversed)
+
+96 F1 -> $F196
+
+
+To compute the address the formula is:
+
+((bank number - 1) * $8000) + $200 + address
+
+So for our example the starting address is:
+
+($11 - 1)*$8000 + $200 = $10*$8000 + $200 = $80200
+
+Vertex data at: $80200 + $F173 = $8F373
+
+Face data at: $80200 + $F196 = $8F396
+
+
+
+-----------------VERTEX DATA----------------
+
+Form of the VErtex data is:
+
+[00 00 F6]  000  000 -010
+[00 01 00]  000  001  000
+[00 FA 00]  000 -006  000
+[00 02 50]  000  002  080
+
+***Triangles Data for BSP and Normals***
+
+
+
+[30] Begin triangle list used to calculate normals and are used by the BSP tree. ($30)
+
+
+
+[14] Number of triangles (equal to the number of faces) wich is twenty in this case
+
+
+
+P1 P2 P3
+
+--------
+
+[00 0A 01] Three point numbers referencing to the calculated vertex list (The list above + mirror points)
+
+[01 0B 00] In this case there is 4 normal points and six mirrored points so that makes 4+(6*2)=16 vertices.
+
+[0A 0B 01] The order in this case: 4 normal vertex, then 6 vertex with their position intact, and 6 mirrored ones.
+
+[0B 02 00]
+
+[00 02 0A]
+
+[03 0B 0A]
+
+[03 02 0B]
+
+[0A 02 03]
+
+[0B 0C 09]
+
+[04 09 0C]
+
+[0A 0D 05]
+
+[08 0D 0A]
+
+[06 0F 0B]
+
+[0B 0F 06]
+
+[0A 0E 07]
+
+[07 0E 0A]
+
+[0D 08 05]
+
+[08 0A 05]
+
+[04 0B 09]
+
+[0C 0B 04]
+
+
+
+***End of Triangles Data for BSP and Normals***
+
+
+
+
+
+***BSP Tree Data***
+
+
+
+[3C] Start of BSP tree
+
+
+
+This is a node-based BSP tree, the number of entries is equal to the number of convex faces groups in the face data.
+
+
+
+[28 06 18 00 0C] Leaf node ($28) where in that case $06 is refering to a triangle in the list above.
+
+This triangle is the splitting triangle used to divide which face group is in front or behind.
+
+$0018 (reversed byte order) is the number of bytes to skip to get to this faces group data (leaf part of the node).
+
+0C is the number of bytes to skip to get to the one of the two branches for this node. "28 01 7C 00 04" in this case.
+
+The other branch is simply the next BSP entry, "28 0E 1E 00 04" in this case.
+
+
+
+[28 0E 1E 00 04]
+
+[44 25 00] Leaf ($44) where $0025 (reversed byte order) is the number of bytes to skip to get to this face group data.
+
+[44 48 00]
+
+[28 01 7C 00 04]
+
+[44 83 00]
+
+[44 94 00]
+
+
+
+***End of BSP Tree Data***
+
+
+
+
+
+***Face Data***
+
+
+
+[14] Start of Face group (convex shape) ($14)
+
+
+
+Ns Fn Co NX NY NZ V1 V2 V3... Ns is the number of sides for this face. Fn is face number or ID.
+
+--------------------------    Co is color/texture number, refer to my documentation (first post in thread) about the color/texture sets.
+
+NX NY and NZ is the vector of the calculated normal for this face normalized to 128 (or is it 127?)
+
+Vx refers to the vertex numbers as defined by the vertex lump list just like the triangle list (see above)
+
+The number of Vx vertex references is equal to the number of sides, in this case three.
+
+Supported number of sides are 1 (point),2 (line),3,4,5,6 and 8 sides.
+
+Ns Fn Co NX NY NZ V1 V2 V3
+
+--------------------------
+
+[03 06 10 A6 5A F7 03 02 0B] ->This face is a triangle with a gray tint ($10), with a normal vector of (-90,90,9), connecting vertex 3, 2 and 11.
+
+[FF] End of faces group($FF)
+
+[14] Start of Face group (convex shape) ($14)
+
+[03 0E 07 BF 64 D5 0A 0E 07]
+
+[FF]
+
+[14]
+
+[03 0A 00 00 7B 1F 0A 0D 05]
+
+[03 0B 2C 00 9E AF 08 0D 0A]
+
+[03 10 00 48 A5 CC 0D 08 05]
+
+[03 11 01 B0 A2 1D 08 0A 05]
+
+[FF]
+
+[14]
+
+[03 07 14 5A 5A F7 0A 02 03]
+
+[03 00 0A DC 87 0C 00 0A 01]
+
+[03 02 2B 00 00 7F 0A 0B 01]
+
+[03 04 12 53 53 32 00 02 0A]
+
+[03 05 00 00 81 FD 03 0B 0A]
+
+[03 0F 07 41 9C 2B 07 0E 0A]
+
+[FF]
+
+[14]
+
+[03 01 0A 24 87 0C 01 0B 00]
+
+[FF]
+
+[14]
+
+[03 0C 07 41 64 D5 06 0F 0B]
+
+[03 0D 07 BF 9C 2B 0B 0F 06]
+
+[FF]
+
+[14]
+
+[03 03 0E AD 53 32 0B 02 00]
+
+[03 12 00 50 A2 1D 04 0B 09]
+
+[03 13 00 00 7B 1F 0C 0B 04]
+
+[03 08 2C 00 9E AF 0B 0C 09]
+
+[03 09 01 B8 A5 CC 04 09 0C]
+
+
+
+[FF 00] End of face group data and end of object data (sometimes is FE00 and sometimes there is nothing indicating the end?)
+
+***End of Face Data***
+
+
+
+Animated data
+
+
+
+Animation Data-----
+
+04           // normal vertex
+XX           // vertex number
+XX XX XX    // vertex data
+XX XX XX
+...
+1C          // animated vertex
+XX          // number of frame
+XX XX     // offset for animated vertex frame 1
+XX XX     // offset for animated vertex frame 2
+XX XX     // offset for animated vertex frame 2
+....          // offset for animated vertex frame x
+
+// frame 0 animated vertex data
+XX          // vertex type
+XX          // vertex number
+XX XX XX   // vertex data
+XX XX XX
+...
+20          // jump
+XX XX      // 16 bit offset where to jump to reach end of vertex data
+// frame 1 animated vertex data
+XX          // vertex type
+XX          // vertex number
+XX XX XX   // vertex data
+XX XX XX
+...
+20          // jump
+XX XX      // 16 bit offset where to jump to reach end of vertex data
+// frame 2 animated vertex data
+XX          // vertex type
+XX          // vertex number
+XX XX XX   // vertex data
+XX XX XX
+...
+20          // jump
+XX XX      // 16 bit offset where to jump to reach end of vertex data
+// frame 3 animated vertex data
+
+

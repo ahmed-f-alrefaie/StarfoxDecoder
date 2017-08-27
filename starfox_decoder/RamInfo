@@ -1,0 +1,50 @@
+Intro:
+
+Conerian ships:
+
+Object id found in:
+
+0x7E0448
+
+0x7E069A
+
+
+Training:
+
+0x7E04B4: Rings
+
+Corneria:
+
+Boxes locations:
+
+0x7E047E
+
+0x7F0091 <--most likely a coincidence.
+
+Arwing:
+0x7E033A
+0x7E3186 < --- This is the player arwing!!!!!!
+0x7E058C <--
+0x7E0772 <-- --- Possibly team arwings
+0x7E0922 <--
+
+
+So this is to go on a certain assumption of the way objects are handled.
+
+A possible setup is that there are slots ranging from 0x7E04XX -- 0x7(E/F)9XX
+Witht the format
+
+Object-ID
+Position X,Y,Z
+Rotations X,Y,Z
+Possible animation frame index
+
+A discovery is that by applying in Snes9x the cheat:
+0x7E3186 val: BCB4 You use the high poly arwing for most of the game.
+The only exception is when shifting cockpits in the space levels.
+
+Plan:
+
+
+Attach to memory location 0x7E3186
+Monitor values

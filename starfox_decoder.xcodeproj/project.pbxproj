@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A79C864E1F4DF42900147BD0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C864D1F4DF42900147BD0 /* main.cpp */; };
+		A79C86581F4DFBA200147BD0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79C86571F4DFBA200147BD0 /* OpenGL.framework */; };
+		A79C86631F4E57D400147BD0 /* StarfoxObjConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C86611F4E57D400147BD0 /* StarfoxObjConverter.cpp */; };
+		A79C86671F504BD000147BD0 /* StarFoxObjFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C86651F504BD000147BD0 /* StarFoxObjFormat.cpp */; };
+		A79C866E1F50B84F00147BD0 /* SMCReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C866C1F50B84F00147BD0 /* SMCReader.cpp */; };
+		A79C86761F50F39E00147BD0 /* OpenGLRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C86741F50F39E00147BD0 /* OpenGLRenderer.cpp */; };
+		A79C867A1F50F85800147BD0 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79C86791F50F85800147BD0 /* SDL2.framework */; };
+		A79C867D1F50FF9E00147BD0 /* OpenGLSFObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C867B1F50FF9E00147BD0 /* OpenGLSFObject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +30,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A71A98DA1F524711002679FE /* RamInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RamInfo; sourceTree = "<group>"; };
 		A79C864A1F4DF42900147BD0 /* starfox_decoder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = starfox_decoder; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79C864D1F4DF42900147BD0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A79C86571F4DFBA200147BD0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		A79C86611F4E57D400147BD0 /* StarfoxObjConverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarfoxObjConverter.cpp; sourceTree = "<group>"; };
+		A79C86621F4E57D400147BD0 /* StarfoxObjConverter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarfoxObjConverter.hpp; sourceTree = "<group>"; };
+		A79C86641F4F3E5400147BD0 /* ObjectFormat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ObjectFormat; sourceTree = "<group>"; };
+		A79C86651F504BD000147BD0 /* StarFoxObjFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarFoxObjFormat.cpp; sourceTree = "<group>"; };
+		A79C86661F504BD000147BD0 /* StarFoxObjFormat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarFoxObjFormat.hpp; sourceTree = "<group>"; };
+		A79C866C1F50B84F00147BD0 /* SMCReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SMCReader.cpp; sourceTree = "<group>"; };
+		A79C866D1F50B84F00147BD0 /* SMCReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SMCReader.hpp; sourceTree = "<group>"; };
+		A79C86741F50F39E00147BD0 /* OpenGLRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLRenderer.cpp; sourceTree = "<group>"; };
+		A79C86751F50F39E00147BD0 /* OpenGLRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLRenderer.hpp; sourceTree = "<group>"; };
+		A79C86791F50F85800147BD0 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		A79C867B1F50FF9E00147BD0 /* OpenGLSFObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLSFObject.cpp; sourceTree = "<group>"; };
+		A79C867C1F50FF9E00147BD0 /* OpenGLSFObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLSFObject.hpp; sourceTree = "<group>"; };
+		A79C867E1F511B9E00147BD0 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79C867A1F50F85800147BD0 /* SDL2.framework in Frameworks */,
+				A79C86581F4DFBA200147BD0 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +67,7 @@
 			children = (
 				A79C864C1F4DF42900147BD0 /* starfox_decoder */,
 				A79C864B1F4DF42900147BD0 /* Products */,
+				A79C86561F4DFBA200147BD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +82,63 @@
 		A79C864C1F4DF42900147BD0 /* starfox_decoder */ = {
 			isa = PBXGroup;
 			children = (
+				A79C867E1F511B9E00147BD0 /* glm */,
+				A79C86681F509DD800147BD0 /* System */,
+				A79C86601F4E190B00147BD0 /* StarfoxCore */,
 				A79C864D1F4DF42900147BD0 /* main.cpp */,
 			);
 			path = starfox_decoder;
+			sourceTree = "<group>";
+		};
+		A79C86561F4DFBA200147BD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A79C86791F50F85800147BD0 /* SDL2.framework */,
+				A79C86571F4DFBA200147BD0 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A79C86601F4E190B00147BD0 /* StarfoxCore */ = {
+			isa = PBXGroup;
+			children = (
+				A79C86611F4E57D400147BD0 /* StarfoxObjConverter.cpp */,
+				A79C86621F4E57D400147BD0 /* StarfoxObjConverter.hpp */,
+				A79C86641F4F3E5400147BD0 /* ObjectFormat */,
+				A79C86651F504BD000147BD0 /* StarFoxObjFormat.cpp */,
+				A79C86661F504BD000147BD0 /* StarFoxObjFormat.hpp */,
+				A71A98DA1F524711002679FE /* RamInfo */,
+			);
+			name = StarfoxCore;
+			sourceTree = "<group>";
+		};
+		A79C86681F509DD800147BD0 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				A79C866B1F50B63B00147BD0 /* Memory */,
+				A79C866A1F50A04400147BD0 /* OpenGL */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+		A79C866A1F50A04400147BD0 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				A79C86741F50F39E00147BD0 /* OpenGLRenderer.cpp */,
+				A79C86751F50F39E00147BD0 /* OpenGLRenderer.hpp */,
+				A79C867B1F50FF9E00147BD0 /* OpenGLSFObject.cpp */,
+				A79C867C1F50FF9E00147BD0 /* OpenGLSFObject.hpp */,
+			);
+			name = OpenGL;
+			sourceTree = "<group>";
+		};
+		A79C866B1F50B63B00147BD0 /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				A79C866C1F50B84F00147BD0 /* SMCReader.cpp */,
+				A79C866D1F50B84F00147BD0 /* SMCReader.hpp */,
+			);
+			name = Memory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +198,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79C86761F50F39E00147BD0 /* OpenGLRenderer.cpp in Sources */,
+				A79C866E1F50B84F00147BD0 /* SMCReader.cpp in Sources */,
+				A79C867D1F50FF9E00147BD0 /* OpenGLSFObject.cpp in Sources */,
 				A79C864E1F4DF42900147BD0 /* main.cpp in Sources */,
+				A79C86671F504BD000147BD0 /* StarFoxObjFormat.cpp in Sources */,
+				A79C86631F4E57D400147BD0 /* StarfoxObjConverter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +300,10 @@
 		A79C86521F4DF42900147BD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -223,6 +311,10 @@
 		A79C86531F4DF42900147BD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -246,6 +338,7 @@
 				A79C86531F4DF42900147BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
