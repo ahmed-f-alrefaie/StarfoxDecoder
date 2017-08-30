@@ -109,6 +109,7 @@ void StarfoxObjConverter::DecodeAnimationData(uint32_t address,std::vector<Verte
     
     
     for(int vl = 0; vl < vert_frames; vl++){
+        std::cout<<"Frame: "<<vl<<std::endl;
         DecodeAnimationVertices(address, vertex_list,start_vertex, vl, num_frames, foffsets);
         
         
@@ -148,9 +149,15 @@ void StarfoxObjConverter::DecodeAnimationVertices(uint32_t & address,std::vector
                 
                 
                 if(frame_num==0)vertex_list.push_back(Vertex());
+
                 position.x = float(smc.read(address++));
                 position.y = float(smc.read(address++));
                 position.z = float(smc.read(address++));
+                
+                if(start_vertex+offset>= vertex_list.size()){
+                    vertex_list.push_back(Vertex());
+                    
+                }
                 vertex_list[start_vertex+offset].frames.push_back(position);
                 vertex_list[start_vertex+offset].vert_type = VertexType::Animated;
                 vertex_list[start_vertex+offset].num_frames = total_frames;
@@ -185,6 +192,11 @@ void StarfoxObjConverter::DecodeAnimationVertices(uint32_t & address,std::vector
                 position.z = float(smc.read(address++));
                 
                 if(frame_num==0)vertex_list.push_back(Vertex());
+                if(start_vertex+offset>= vertex_list.size()){
+                    vertex_list.push_back(Vertex());
+                            
+                }
+                
                 
                 vertex_list[start_vertex+offset].frames.push_back(position);
                 vertex_list[start_vertex+offset].vert_type = VertexType::Animated;
@@ -194,6 +206,10 @@ void StarfoxObjConverter::DecodeAnimationVertices(uint32_t & address,std::vector
                 
                 position.x*=-1;
                 offset++;
+                
+                if(start_vertex+offset>= vertex_list.size()){
+                    vertex_list.push_back(Vertex());
+                }
                 vertex_list[start_vertex+offset].frames.push_back(position);
                 vertex_list[start_vertex+offset].vert_type = VertexType::Animated;
                 vertex_list[start_vertex+offset].num_frames = total_frames;

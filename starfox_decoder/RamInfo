@@ -41,7 +41,22 @@ Possible animation frame index
 
 A discovery is that by applying in Snes9x the cheat:
 0x7E3186 val: BCB4 You use the high poly arwing for most of the game.
+
+0x7E318A / 0x7E033A <--Ram locations for no right wing arwing.
+It seems like these two ram locations must be set for the arwing change to apply when losing wings
+
+
+
+
+
 The only exception is when shifting cockpits in the space levels.
+
+-------Newer discovery has show that the object ids may be grouped together----
+At least for the player
+
+
+
+
 
 Plan:
 

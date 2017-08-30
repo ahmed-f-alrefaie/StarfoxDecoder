@@ -26,8 +26,9 @@ void OpenGLSFObject::Draw(){
     for(auto f : faces){
         
         if(f.num_sides == 2){
+            glDisable(GL_LIGHTING);
             glBegin(GL_LINES);
-            glNormal3f(0.0, 0.0, 1.0);
+            
             
         }else if(f.num_sides == 1)
             glBegin(GL_POINT);
@@ -40,9 +41,11 @@ void OpenGLSFObject::Draw(){
         for(int i=0; i < f.num_sides; i++){
             
             glm::vec3 position =vertices[f.vertex_index[i]].GetFrame(int(frame));
+            glColor3f(0.5f, 0.5f, 0.5f);
            glVertex3f(position.x,position.y,position.z);
         }
         glEnd();
+        glEnable(GL_LIGHTING);
     }
     
     

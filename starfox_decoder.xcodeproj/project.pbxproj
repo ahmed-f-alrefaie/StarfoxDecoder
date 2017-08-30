@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73947C31F561CC800425CA8 /* StarfoxTextures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A73947C11F561CC800425CA8 /* StarfoxTextures.cpp */; };
 		A79C864E1F4DF42900147BD0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C864D1F4DF42900147BD0 /* main.cpp */; };
 		A79C86581F4DFBA200147BD0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79C86571F4DFBA200147BD0 /* OpenGL.framework */; };
 		A79C86631F4E57D400147BD0 /* StarfoxObjConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C86611F4E57D400147BD0 /* StarfoxObjConverter.cpp */; };
@@ -15,6 +16,7 @@
 		A79C86761F50F39E00147BD0 /* OpenGLRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C86741F50F39E00147BD0 /* OpenGLRenderer.cpp */; };
 		A79C867A1F50F85800147BD0 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79C86791F50F85800147BD0 /* SDL2.framework */; };
 		A79C867D1F50FF9E00147BD0 /* OpenGLSFObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A79C867B1F50FF9E00147BD0 /* OpenGLSFObject.cpp */; };
+		A7BA9E0B1F532892007C3B94 /* StarfoxPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7BA9E091F532892007C3B94 /* StarfoxPalette.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,10 @@
 
 /* Begin PBXFileReference section */
 		A71A98DA1F524711002679FE /* RamInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RamInfo; sourceTree = "<group>"; };
+		A71A98DC1F52EA01002679FE /* Todolist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todolist; sourceTree = "<group>"; };
+		A73947C11F561CC800425CA8 /* StarfoxTextures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarfoxTextures.cpp; sourceTree = "<group>"; };
+		A73947C21F561CC800425CA8 /* StarfoxTextures.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarfoxTextures.hpp; sourceTree = "<group>"; };
+		A73947C51F562EDB00425CA8 /* png++ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "png++"; sourceTree = "<group>"; };
 		A79C864A1F4DF42900147BD0 /* starfox_decoder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = starfox_decoder; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79C864D1F4DF42900147BD0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		A79C86571F4DFBA200147BD0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -47,6 +53,8 @@
 		A79C867B1F50FF9E00147BD0 /* OpenGLSFObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLSFObject.cpp; sourceTree = "<group>"; };
 		A79C867C1F50FF9E00147BD0 /* OpenGLSFObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLSFObject.hpp; sourceTree = "<group>"; };
 		A79C867E1F511B9E00147BD0 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
+		A7BA9E091F532892007C3B94 /* StarfoxPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarfoxPalette.cpp; sourceTree = "<group>"; };
+		A7BA9E0A1F532892007C3B94 /* StarfoxPalette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarfoxPalette.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A71A98DB1F52E9DB002679FE /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				A71A98DA1F524711002679FE /* RamInfo */,
+				A79C86641F4F3E5400147BD0 /* ObjectFormat */,
+				A71A98DC1F52EA01002679FE /* Todolist */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
 		A79C86411F4DF42800147BD0 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +100,8 @@
 		A79C864C1F4DF42900147BD0 /* starfox_decoder */ = {
 			isa = PBXGroup;
 			children = (
+				A73947C51F562EDB00425CA8 /* png++ */,
+				A71A98DB1F52E9DB002679FE /* Documentation */,
 				A79C867E1F511B9E00147BD0 /* glm */,
 				A79C86681F509DD800147BD0 /* System */,
 				A79C86601F4E190B00147BD0 /* StarfoxCore */,
@@ -104,10 +124,12 @@
 			children = (
 				A79C86611F4E57D400147BD0 /* StarfoxObjConverter.cpp */,
 				A79C86621F4E57D400147BD0 /* StarfoxObjConverter.hpp */,
-				A79C86641F4F3E5400147BD0 /* ObjectFormat */,
 				A79C86651F504BD000147BD0 /* StarFoxObjFormat.cpp */,
 				A79C86661F504BD000147BD0 /* StarFoxObjFormat.hpp */,
-				A71A98DA1F524711002679FE /* RamInfo */,
+				A7BA9E091F532892007C3B94 /* StarfoxPalette.cpp */,
+				A7BA9E0A1F532892007C3B94 /* StarfoxPalette.hpp */,
+				A73947C11F561CC800425CA8 /* StarfoxTextures.cpp */,
+				A73947C21F561CC800425CA8 /* StarfoxTextures.hpp */,
 			);
 			name = StarfoxCore;
 			sourceTree = "<group>";
@@ -203,7 +225,9 @@
 				A79C867D1F50FF9E00147BD0 /* OpenGLSFObject.cpp in Sources */,
 				A79C864E1F4DF42900147BD0 /* main.cpp in Sources */,
 				A79C86671F504BD000147BD0 /* StarFoxObjFormat.cpp in Sources */,
+				A7BA9E0B1F532892007C3B94 /* StarfoxPalette.cpp in Sources */,
 				A79C86631F4E57D400147BD0 /* StarfoxObjConverter.cpp in Sources */,
+				A73947C31F561CC800425CA8 /* StarfoxTextures.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +328,12 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lpng",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -314,6 +344,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lpng",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

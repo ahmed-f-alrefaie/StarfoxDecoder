@@ -14,6 +14,10 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 
+
+
+
+
 class OpenGLRenderer{
 private:
     int window_width,window_height;

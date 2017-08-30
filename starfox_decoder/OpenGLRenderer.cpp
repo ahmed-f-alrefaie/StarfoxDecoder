@@ -56,7 +56,7 @@ void OpenGLRenderer::Initialize(int width, int height){
     glEnable(GL_LIGHT0);
     
     GLfloat lightpos[] = {.5, 0.0, -0.0f, 0.};
-    GLfloat color[] = {.2, 0.2, 0.2f, 0.};
+    GLfloat color[] = {.5, 0.5, 0.5f, 0.};
     glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
     glLightfv(GL_LIGHT0, GL_AMBIENT_AND_DIFFUSE, color);
     //glLightfv(GL_LIGHT0, GL_DIFFUSE, color);

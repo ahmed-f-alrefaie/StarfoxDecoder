@@ -295,4 +295,62 @@ XX XX XX
 XX XX      // 16 bit offset where to jump to reach end of vertex data
 // frame 3 animated vertex data
 
+--------------------------------
 
+
+One thing I figured out pretty quickly is that StarFox only uses a fixed palette of 16 colors to display all polygons!
+
+
+Using a checkerboard pattern the FX chip can simulate up to 256 colors on the screen (more like 128 though). These
+pseudo-colors are refered as a XY byte in hex so X and Y are the 2 colors used in the pattern. Color 0 on the 16 colors
+palette is a transparent color so when you use it with a normal color, lets say F0 with F being green, you get a
+semi-transparent green color polygon. As far as I know this is not used in the game except for bitmap texture masking
+but in theory everything could be semi-transparent with probably no loss on speed. Each object face can either use a
+solid color, a light sourced color or a bitmap texture. The faces color number refers to the type of color/texture
+using a byte, that gives 256 possibilities. Those possibilities are defined somewhere begining at $18200 in the ROM.
+Each entry can be static or an animated sequence of colors/textures. There are about 9 of these sets and the 28 byte
+object definition has a pointer to tell which one is used, for example 13 82 is the most commonly used palette (refer
+to my other post to know where the 28 bytes object definition table is.) That 13 82 number translate to
+$18213+$200=$18413 in the ROM. At this address you can find 256 2 bytes color/texture references. Here is a little
+description of the format:
+
+XX 00 to XX 08= Nine light sourced colors, the different variations are stored at $19000 in ROM.
+The 9 colors are stored as 10 shades so that makes 90 bytes. There are 4 conscecutive shade variations of these 90
+bytes.
+
+
+XX 3E= Color where XX is Color from one of the twenty 32 color palette sets starting at $18D8A in ROM.
+Which of one of the 20 palettes variations is used can be changed dynamically by the game (like when you crash).
+
+
+XX 3F= Color where each X is from the standard StarFox 4-bit palette to form the checkerboard pattern
+
+
+XX 40= 32x32 Texture where XX is texture position number, 80$+ is on texture page two
+XX 41= 64x64 Texture flip horiz
+XX 42= 8x8 Texture flip horiz
+XX 43= 64x16 Texture flip horiz
+XX 44= 32x8 Texture flip horiz
+XX 45= 32x8 Texture
+XX 46= 64x64 Texture
+XX 47= 16x8 Texture
+XX 48= 32x32 Texture
+XX 49= 64x64 Texture Polar Mapping Down Left
+XX 4A= 64x64 Texture Polar Mapping Down Right
+
+As many figured out textures are stored as two 256x256 pages using 4 bits per pixel (they use the same 16 colors
+palette). The pages are interleaved meaning that for each XY$ byte in hex, X is used for page 1 and Y for page 2.
+
+XX 8X= Animated color/texture where XXX is anim data offset (18XXX$+200$ in ROM).
+First byte of animated data is the number of frames, then the data is in this same format (some entries seems unused
+and corrupted).
+
+So thats about it, I didnt check all of the other types because they are not used in the game objects, but there are
+some weird unused things like the polar mapping texture effect which creates a circular pattern from a bitmap.
+
+Note that in the pictured palettes, I blended the checkerboard pattern to obtain a solid color, anyway Shockwave uses
+opengl and I don't see a way to do this silkscreening effect on a standard 3d videocard, it's really an FX chip thing.
+(no it's not a matter of applying a checkerboard pattern to a polygon, as it would get distorted by perspective)
+
+Here is the most common 256 colors/textures palette (13 82) used in the game, decoded to rgb color, note that bitmap
+textures and the transparent color are represented as white and black . Colors going down are animated.

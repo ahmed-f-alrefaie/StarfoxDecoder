@@ -11,7 +11,8 @@
 #include "OpenGLSFObject.hpp"
 #include "StarFoxObjFormat.hpp"
 #include "OpenGLRenderer.hpp"
-
+#include "StarfoxPalette.hpp"
+#include "StarfoxTextures.hpp"
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
@@ -24,6 +25,14 @@ int main(int argc, const char * argv[]) {
     OpenGLSFObject arwing;
     arwing.ConstructObject();
     
+    
+    std::cout<<"Palette:"<<std::endl;
+    StarfoxPalette::ReadCurrentPalette(StarfoxPalette::SPACE_PALETTE_ADDRESS);
+    std::cout<<"End palette"<<std::endl;
+    
+    StarfoxTexture::ReadTextureDataFromRom();
+    StarfoxTexture::ExportToImage();
+   // exit(0);
     
     //std::cout <<"Arwing header address: "<<std::hex << StarfoxObjConverter::GetHeaderAddress(0x20D3)<<std::endl;
     

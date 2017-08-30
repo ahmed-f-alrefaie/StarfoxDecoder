@@ -27,9 +27,20 @@ struct Vertex{
     int current_offset;
     glm::vec3 GetFrame(int frame_num = 0){
         int idx =frame_num %num_frames;
-        return frames[frame_idx[idx]];
+        return frames[frame_idx[idx] % frames.size()];
     }
 };
+
+enum class ColorType {Color,Texture};
+struct FaceColor{
+    ColorType color_type;
+    
+    
+    
+    
+};
+
+
 
 struct Face{
     int num_sides;
@@ -40,6 +51,8 @@ struct Face{
     void Print(){ std::cout<<num_sides<<" "<<face_id<<std::endl;};
     
 };
+
+
 
 
 class StarFoxObject{
